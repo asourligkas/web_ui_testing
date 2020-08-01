@@ -8,6 +8,8 @@ pytest = "*"
 selenium = "*"
 
 [packages]
+pytest = "*"
+pytest-html = "*"
 
 [requires]
 python_version = "3.8"
