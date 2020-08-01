@@ -1,22 +1,5 @@
-import pytest
 from pages.first_example_result import DuckDuckGoResultPage
 from pages.first_example_search import DuckDuckGoSearchPage
-from selenium.webdriver import Chrome
-
-
-@pytest.fixture
-def browser():
-    # Initialize ChromeDriver
-    driver = Chrome()
-    # Wait implicitly for elements to be ready before attempting interactions
-    driver.implicitly_wait(10)
-
-    # Return the driver object at the end of setup
-    yield driver
-
-    # For cleanup, quit the driver
-    driver.quit()
-
 
 def test_basic_duckduckgo_search(browser):
     # Set up test case data
