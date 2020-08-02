@@ -3,7 +3,6 @@ import pytest
 from selenium.webdriver import Chrome, Firefox
 
 CONFIG_PATH = 'tests/config.json'
-DEFAULT_WAIT_TIME = 10
 SUPPORTED_BROWSERS = ['chrome', 'firefox']
 
 
@@ -25,14 +24,8 @@ def config_browser(config):
     return config['browser']
 
 
-@pytest.fixture(scope='session')
-def config_wait_time(config):
-    # Validate and return the wait time from the config data
-    return config['wait_time'] if 'wait_time' in config else DEFAULT_WAIT_TIME
-
-
 @pytest.fixture
-def browser(config_browser, config_wait_time):
+def browser(config_browser):
     # Initialize WebDriver
     if config_browser == 'chrome':
         driver = Chrome()
@@ -40,8 +33,6 @@ def browser(config_browser, config_wait_time):
         driver = Firefox()
     else:
         raise Exception(f'"{config_browser}" is not a supported browser')
-    # Wait implicitly for elements to be ready before attempting interactions
-    driver.implicitly_wait(config_wait_time)
 
     # Return the driver object at the end of setup
     yield driver
