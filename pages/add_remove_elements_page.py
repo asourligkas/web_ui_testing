@@ -1,6 +1,4 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 class AddRemoveElementsPage:
     # URL
@@ -30,6 +28,3 @@ class AddRemoveElementsPage:
     def delete_last_element(self):
         delete_buttons_list = self.driver.find_elements(*self.delete_buttons)
         delete_buttons_list[-1].click()
-
-
-
